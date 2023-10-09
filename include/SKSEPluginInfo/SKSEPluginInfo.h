@@ -10,8 +10,8 @@
 #include <REL/Relocation.h>
 
 namespace SKSEPluginInfo {
-    extern const char*        GetPluginName;
-    extern const char*        GetAuthorName;
-    extern const char*        GetAuthorEmail;
-    extern const REL::Version GetPluginVersion;
+    const char*        GetPluginName();
+    const char*        GetAuthorName();
+    const char*        GetAuthorEmail();
+    const REL::Version GetPluginVersion();
 }
