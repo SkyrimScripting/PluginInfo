@@ -8,7 +8,7 @@ extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Ve
     .pluginVersion = SKSEPluginInfo::PluginVersion.pack(),
     .pluginName    = SKSEPluginInfo::PluginName.data(),
     .author        = SKSEPluginInfo::AuthorName.data(),
-    .authorEmail   = SKSEPluginInfo::AuthorEmail.data(),
+    .supportEmail  = SKSEPluginInfo::AuthorEmail.data(),
     /*
         kVersionIndependent_AddressLibraryPostAE = 1 << 0,
         kVersionIndependent_Signatures = 1 << 1,
