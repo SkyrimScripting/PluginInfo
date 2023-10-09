@@ -4,11 +4,19 @@
 
 #include "../SKSEPluginInfo.h"
 
-extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
-    SKSE::PluginVersionData v;
-    v.PluginVersion(SKSEPluginInfo::PluginVersion);
-    v.PluginName(SKSEPluginInfo::PluginName);
-    v.UsesAddressLibrary();
-    v.UsesUpdatedStructs();
-    return v;
-}();
+extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
+    .pluginVersion = SKSEPluginInfo::PluginVersion.pack(),
+    .pluginName    = SKSEPluginInfo::PluginName.data(),
+    .author        = SKSEPluginInfo::AuthorName.data(),
+    .authorEmail   = SKSEPluginInfo::AuthorEmail.data(),
+    /*
+        kVersionIndependent_AddressLibraryPostAE = 1 << 0,
+        kVersionIndependent_Signatures = 1 << 1,
+        kVersionIndependent_StructsPost629 = 1 << 2,
+
+        versionIndependency |= kVersionIndependent_AddressLibraryPostAE; (1 << 0)
+        versionIndependency |= kVersionIndependent_StructsPost629; (1 << 2)
+
+        versionIndependency = 5 (1 | 4) [0101 = 5]
+    */
+    .versionIndependence = 5};
