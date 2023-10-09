@@ -46,7 +46,7 @@ Helper headers are provided for defining these required DLL interfaces:
 Here is a minimal working SKSE plugin using core CommonLib (_not NG_):
 
 ```cpp
-#include <SKSE/SKSEPluginInfo.h>
+#include <SKSEPluginInfo.h>
 
 // You need to define the plugin name and version yourself.
 // Normally this would be handled by a build system for you.
@@ -56,8 +56,8 @@ std::uint16_t SKSEPluginInfo::GetPluginVersionMinor() { return 0; }
 std::uint16_t SKSEPluginInfo::GetPluginVersionPatch() { return 0; }
 
 // Now you can use helper headers to define the required DLL interfaces.
-#include <SKSE/SKSEPluginInfo/Extern/SKSEPlugin_Query.h>
-#include <SKSE/SKSEPluginInfo/Extern/SKSEPlugin_Version.h> // <--- only needed for AE
+#include <SKSEPluginInfo/Extern/SKSEPlugin_Query.h>
+#include <SKSEPluginInfo/Extern/SKSEPlugin_Version.h> // <--- only needed for AE
 
 // Then you're ready to define your own entry point for the SKSE plugin
 extern "C" __declspec(dllexport) bool SKSEPlugin_Load(const SKSE::LoadInterface* skse) {
