@@ -50,10 +50,10 @@ Here is a minimal working SKSE plugin using core CommonLib (_not NG_):
 
 // You need to define the plugin name and version yourself.
 // Normally this would be handled by a build system for you.
-const char* SKSE::SKSEPluginInfo::GetPluginName() { return "MyCoolPlugin"; }
-std::uint16_t SKSE::SKSEPluginInfo::GetPluginVersionMajor() { return 1; }
-std::uint16_t SKSE::SKSEPluginInfo::GetPluginVersionMinor() { return 0; }
-std::uint16_t SKSE::SKSEPluginInfo::GetPluginVersionPatch() { return 0; }
+const char* SKSEPluginInfo::GetPluginName() { return "MyCoolPlugin"; }
+std::uint16_t SKSEPluginInfo::GetPluginVersionMajor() { return 1; }
+std::uint16_t SKSEPluginInfo::GetPluginVersionMinor() { return 0; }
+std::uint16_t SKSEPluginInfo::GetPluginVersionPatch() { return 0; }
 
 // Now you can use helper headers to define the required DLL interfaces.
 #include <SKSE/SKSEPluginInfo/Extern/SKSEPlugin_Query.h>
@@ -66,10 +66,10 @@ extern "C" __declspec(dllexport) bool SKSEPlugin_Load(const SKSE::LoadInterface*
     // ...
     
     // If you need to get the plugin name, in your own plugin:
-    auto pluginName = SKSE::SKSEPluginInfo::GetPluginName();
+    auto pluginName = SKSEPluginInfo::GetPluginName();
 
     // Or the version:
-    auto pluginVersion = SKSE::SKSEPluginInfo::GetPluginVersionString();
+    auto pluginVersion = SKSEPluginInfo::GetPluginVersionString();
 
     // ...
 

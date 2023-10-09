@@ -2,9 +2,6 @@
 
 // This is for all versions of CommonLib/SKSE
 
-#include <REL/Relocation.h>
-#include <SKSE/SKSE.h>
-
 #include "../SKSEPluginInfo.h"
 
 extern "C" __declspec(dllexport) bool SKSEAPI REL::Version version{
