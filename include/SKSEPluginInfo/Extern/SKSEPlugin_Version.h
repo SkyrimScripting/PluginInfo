@@ -7,34 +7,17 @@
 
 #include "../SKSEPluginInfo.h"
 
-namespace {
-    // Lovely hacky fun time to get the constinit working OK for the various string_view fields
+extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
+    SKSE::PluginVersionData v{};
 
-    constexpr char[256] to_char_array_256(const std::string_view sv) {
-        char arr[256] = {};
-        for (size_t i = 0; i < sv.size() && i < 256; ++i) arr[i] = sv[i];
-        return arr;
-    }
-    constexpr char[252] to_char_array_252(const std::string_view sv) {
-        char arr[252] = {};
-        for (size_t i = 0; i < sv.size() && i < 252; ++i) arr[i] = sv[i];
-        return arr;
-    }
+    v.PluginVersion(SKSEPluginInfo::PluginVersion);
+    v.PluginName(SKSEPluginInfo::PluginName.data());
+    v.AuthorName(SKSEPluginInfo::AuthorName.data());
+    v.AuthorEmail(SKSEPluginInfo::AuthorEmail.data());
 
-    extern "C" __declspec(dllexport) constinit SKSE::PluginVersionData SKSEPlugin_Version{
-        .pluginVersion = SKSEPluginInfo::PluginVersion.pack(),
-        .pluginName    = to_char_array_256(SKSEPluginInfo::PluginName),
-        .author        = to_char_array_256(SKSEPluginInfo::AuthorName),
-        .supportEmail  = to_char_array_252(SKSEPluginInfo::AuthorEmail),
-        /*
-            kVersionIndependent_AddressLibraryPostAE = 1 << 0,
-            kVersionIndependent_Signatures = 1 << 1,
-            kVersionIndependent_StructsPost629 = 1 << 2,
+    v.UsesAddressLibrary(true);
+    v.HasNoStructUse(true);
+    v.UsesStructsPost629(false);
 
-            versionIndependency |= kVersionIndependent_AddressLibraryPostAE; (1 << 0)
-            versionIndependency |= kVersionIndependent_StructsPost629; (1 << 2)
-
-            versionIndependency = 5 (1 | 4) [0101 = 5]
-        */
-        .versionIndependence = 5};
-}
+    return v;
+}();
