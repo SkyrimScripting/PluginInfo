@@ -4,11 +4,8 @@
 
 #include "../SKSEPluginInfo.h"
 
-extern "C" __declspec(dllexport) bool SKSEAPI REL::Version version{
-    SKSE::PluginInfo::GetPluginVersionMajor(), SKSE::PluginInfo::GetPluginVersionMinor(),
-    SKSE::PluginInfo::GetPluginVersionPatch()};
-
-SKSEPlugin_Query(const SKSE::QueryInterface* a_skse, SKSE::PluginInfo* a_info) {
+extern "C" __declspec(dllexport) bool SKSEAPI
+    SKSEPlugin_Query(const SKSE::QueryInterface* a_skse, SKSE::PluginInfo* a_info) {
     a_info->infoVersion = SKSE::PluginInfo::kVersion;
     a_info->name        = SKSEPluginInfo::PluginName;
     a_info->version     = SKSEPluginInfo::PluginVersion.pack();
