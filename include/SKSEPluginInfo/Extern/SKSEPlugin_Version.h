@@ -6,10 +6,9 @@
 
 extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
     SKSE::PluginVersionData v;
-    v.PluginVersion(SKSEPluginInfo::GetPluginVersionStruct());
-    v.PluginName(SKSEPluginInfo::GetPluginName());
+    v.PluginVersion(SKSEPluginInfo::PluginVersion);
+    v.PluginName(SKSEPluginInfo::PluginName);
     v.UsesAddressLibrary();
     v.UsesUpdatedStructs();
-
     return v;
 }();

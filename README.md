@@ -18,22 +18,16 @@ If you are using a package which integrates `SKSEPluginInfo`, then you can simpl
 // ... my SKSE plugin ...
 
 // Get the plugin name, e.g. "MyCoolPlugin"
-const char* pluginName = SKSEPluginInfo::GetPluginName();
+const char* pluginName = SKSEPluginInfo::PluginName;
 
 // Get the plugin version parts combined into a string, e.g. "1.0.0"
-string pluginVersion = SKSEPluginInfo::GetPluginVersionString();
+std::string pluginVersion = SKSEPluginInfo::VersionString.string();
 ```
 
 And if you want some more specific access to the plugin version:
 
 ```cpp
-// Get the plugin version parts individually, e.g. 1, 0, 0
-uint16_t pluginVersionMajor = SKSEPluginInfo::GetPluginVersionMajor();
-uint16_t pluginVersionMinor = SKSEPluginInfo::GetPluginVersionMinor();
-uint16_t pluginVersionPatch = SKSEPluginInfo::GetPluginVersionPatch();
-
-// Get the plugin version parts as a REL::Version struct, e.g. { 1, 0, 0 }
-REL::Version = SKSEPluginInfo::GetPluginVersionStruct();
+// ...
 ```
 
 ## SKSE Plugin Setup
@@ -46,33 +40,5 @@ Helper headers are provided for defining these required DLL interfaces:
 Here is a minimal working SKSE plugin using core CommonLib (_not NG_):
 
 ```cpp
-#include <SKSEPluginInfo.h>
-
-// You need to define the plugin name and version yourself.
-// Normally this would be handled by a build system for you.
-const char* SKSEPluginInfo::GetPluginName() { return "MyCoolPlugin"; }
-std::uint16_t SKSEPluginInfo::GetPluginVersionMajor() { return 1; }
-std::uint16_t SKSEPluginInfo::GetPluginVersionMinor() { return 0; }
-std::uint16_t SKSEPluginInfo::GetPluginVersionPatch() { return 0; }
-
-// Now you can use helper headers to define the required DLL interfaces.
-#include <SKSEPluginInfo/Extern/SKSEPlugin_Query.h>
-#include <SKSEPluginInfo/Extern/SKSEPlugin_Version.h> // <--- only needed for AE
-
-// Then you're ready to define your own entry point for the SKSE plugin
-extern "C" __declspec(dllexport) bool SKSEPlugin_Load(const SKSE::LoadInterface* skse) {
-    SKSE::Init(skse);
-
-    // ...
-    
-    // If you need to get the plugin name, in your own plugin:
-    auto pluginName = SKSEPluginInfo::GetPluginName();
-
-    // Or the version:
-    auto pluginVersion = SKSEPluginInfo::GetPluginVersionString();
-
-    // ...
-
-    return true;
-}
+// ... TODO ...
 ```
