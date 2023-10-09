@@ -7,12 +7,9 @@
 
 #include <REL/Relocation.h>
 
-#include <cstdint>
-#include <string_view>
-
 namespace SKSEPluginInfo {
-    extern const std::string_view PluginName;
-    extern const std::string_view AuthorName;
-    extern const std::string_view AuthorEmail;
-    extern const REL::Version     PluginVersion;
+    extern const char*        GetPluginName;
+    extern const char*        GetAuthorName;
+    extern const char*        GetAuthorEmail;
+    extern const REL::Version GetPluginVersion;
 }
