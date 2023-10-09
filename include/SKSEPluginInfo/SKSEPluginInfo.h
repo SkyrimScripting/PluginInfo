@@ -11,6 +11,6 @@
 #include <string>
 
 namespace SKSEPluginInfo {
-    extern const char*  PluginName;
-    extern REL::Version PluginVersion;
+    extern const char*        PluginName;
+    extern const REL::Version PluginVersion;
 }
