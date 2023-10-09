@@ -15,9 +15,8 @@ extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
     v.AuthorName(SKSEPluginInfo::AuthorName.data());
     v.AuthorEmail(SKSEPluginInfo::AuthorEmail.data());
 
-    v.UsesAddressLibrary(true);
-    v.HasNoStructUse(true);
-    v.UsesStructsPost629(false);
+    v.UsesAddressLibrary();
+    v.UsesUpdatedStructs();
 
     return v;
 }();
