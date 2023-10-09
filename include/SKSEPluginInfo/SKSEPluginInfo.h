@@ -2,6 +2,8 @@
 
 // These functions need to be defined in your plugin's source file (or by a build system)
 
+// These are functions for flexibility
+
 #include <SKSE/SKSE.h>
 // ^ before REL/Relocation.h
 
